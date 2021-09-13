@@ -1,0 +1,37 @@
+<form autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="promotionId" [value]="service.formData.promotionId">
+  <div class="form-group">
+    <label class="form-label">Promotion Code</label>
+    <input class="form-control" name="promotionCode" #promotionCode="ngModel"
+      [(ngModel)]="service.formData.promotionCode" [class.invalid]="promotionCode.invalid && promotionCode.touched"
+      required readonly>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Promotion Name</label>
+    <input class="form-control" placeholder="Promotion Name" name="promotionName" #promotionName="ngModel"
+      [(ngModel)]="service.formData.promotionName" [class.invalid]="promotionName.invalid && promotionName.touched"
+      required>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label class="form-label">Minimum Amount</label>
+      <input class="form-control" placeholder="Minimum Amount" name="minAmount" #minAmount="ngModel"
+        [(ngModel)]="service.formData.minAmount" [class.invalid]="minAmount.invalid && minAmount.touched" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="form-label">Maximum Amount</label>
+      <input class="form-control" placeholder="Maximum Amount" name="maxAmount" #maxAmount="ngModel"
+        [(ngModel)]="service.formData.maxAmount" [class.invalid]="maxAmount.invalid && maxAmount.touched" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Promotion Amount</label>
+    <input class="form-control" placeholder="Promotion Amount" name="promotionAmount" #promotionAmount="ngModel"
+      [(ngModel)]="service.formData.promotionAmount"
+      [class.invalid]="promotionAmount.invalid && promotionAmount.touched" required>
+  </div>
+  <br>
+  <div class="form-group d-grid gap-2">
+    <button class="btn btn-info" type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>

@@ -1,0 +1,65 @@
+<form autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="paymentId" [value]="service.formData.paymentId">
+  <div class="form-group">
+    <label class="form-label">Total</label>
+    <input class="form-control" name="total" #total="ngModel" [(ngModel)]="service.formData.total"
+      [class.invalid]="total.invalid && total.touched" required>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-7">
+      <label>Voucher</label>
+      <select name="voucherId" #voucherId="ngModel" [(ngModel)]="service.formData.voucherId" class="form-control">
+        <option value="0" selected>-Select-</option>
+        <option *ngFor="let item of VoucherList" value="{{item.voucherAmount}}">
+          {{item.voucherCode}}
+        </option>
+      </select>
+    </div>
+    <!-- <div class="form-group col-md-3">
+      <label>button</label>
+      <button class="btn btn-info" (click)="add()">Add</button>
+      <button type="button" (click)="AddVoucher()">Add</button>
+    </div> -->
+    <div class="form-group col-md-5">
+      <label>Amount</label>
+      <input type="text" class="form-control" value={{service.formData.voucherId}} readonly>
+      <!-- <div>{{service.formData.voucherId}}</div> -->
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <label class="form-label">Voucher</label>
+    <input class="form-control" name="voucherId" #voucherId="ngModel"
+      [(ngModel)]="service.formData.voucherId" [class.invalid]="voucherId.invalid && voucherId.touched"
+      >
+  </div> -->
+
+  <div class="form-group">
+    <label>Promotion</label>
+    <select name="promotionId" #promotionId="ngModel" [(ngModel)]="service.formData.promotionId" class="form-control">
+      <option value="0">-Select-</option>
+      <option *ngFor="let item of PromotionList" value="{{item.promotionId}}">{{item.promotionCode}}</option>
+    </select>
+  </div>
+
+  <!-- <div class="form-group">
+    <label class="form-label">Promotion</label>
+    <input class="form-control" name="promotionId" #promotionId="ngModel" [(ngModel)]="service.formData.promotionId">
+    <button (click)="proAdd()">Add</button>
+    <input type="text" value="">
+  </div> -->
+  <div class="form-group">
+    <label class="form-label">Total Discount</label>
+    <input class="form-control" placeholder="Total Discount" name="totalDiscount" #totalDiscount="ngModel"
+      [(ngModel)]="service.formData.totalDiscount" [class.invalid]="totalDiscount.invalid && totalDiscount.touched"
+      readonly>
+  </div>
+  <div class="form-group">
+    <label class="form-label">SubTotal</label>
+    <input class="form-control" placeholder="SubTotal" name="subTotal" #subTotal="ngModel"
+      [(ngModel)]="service.formData.subTotal" [class.invalid]="subTotal.invalid && subTotal.touched" readonly>
+  </div>
+  <br>
+  <div class="form-group d-grid gap-2">
+    <button class="btn btn-info" type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>

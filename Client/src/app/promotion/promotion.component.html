@@ -1,0 +1,49 @@
+<style type="text/css">
+  .jumbotron {
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--bs-light);
+    border-radius: .3rem;
+  }
+
+</style>
+
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Promotion</h1>
+</div>
+<!-- <ul>
+  <a href="../voucher/voucher.component.html">Voucher</a>
+  <a href="../promotion/promotion.component.html">Promotion</a>
+</ul> -->
+<div class="row">
+  <div class="col-md-6">
+    <app-promotion-form></app-promotion-form>
+  </div>
+  <div class="col-md-6">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Code</th>
+          <th>MinAmount</th>
+          <th>MaxAmount</th>
+          <th>ProAmount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pro of service.list">
+          <td (click)="populateForm(pro)">{{pro.promotionName}}</td>
+          <td (click)="populateForm(pro)">{{pro.promotionCode}}</td>
+          <td (click)="populateForm(pro)">{{pro.minAmount}}</td>
+          <td (click)="populateForm(pro)">{{pro.maxAmount}}</td>
+          <td (click)="populateForm(pro)">{{pro.promotionAmount}}</td>
+
+          <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pro.promotionId)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
